@@ -5,15 +5,16 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { PagesModule } from './pages/pages.module';
+import { PagesModule } from './modules/pages.module';
 import { AuthModule } from './auth/auth.module';
-import { ProductoModule } from './producto/producto.module';
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    NopagefoundComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +22,7 @@ import { ProductoModule } from './producto/producto.module';
     SharedModule,
     PagesModule,
     AuthModule,
-    ProductoModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
