@@ -16,21 +16,26 @@
 
 <body class="pace-top">
   <!-- begin #page-loader -->
-  <div id="page-loader" class="fade show">
+  <!-- <div id="page-loader" class="fade show">
     <div class="material-loader">
       <svg class="circular" viewBox="25 25 50 50">
         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
       </svg>
       <div class="message">Cargando...</div>
     </div>
-  </div>
+  </div> -->
   <!-- end #page-loader -->
 
-  <app-root></app-root>
+  <app-root>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade show"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+  </app-root>
 
   <!-- ================== BEGIN BASE JS ================== -->
   <script src="./assets/js/app.min.js"></script>
   <script src="./assets/js/theme/material.min.js"></script>
+  <script id="app-main"></script>
   <!-- ================== END BASE JS ================== -->
 </body>
 

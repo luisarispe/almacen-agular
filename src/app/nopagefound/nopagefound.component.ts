@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+
+import pageSettings from '../config/page-settings';
 
 @Component({
   selector: 'app-nopagefound',
@@ -6,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class NopagefoundComponent implements OnInit {
+export class NopagefoundComponent implements OnDestroy {
 
-  constructor() { }
+  pageSettings: any;
 
-  ngOnInit(): void {
+  constructor() {
+    this.pageSettings = pageSettings;
+    this.pageSettings.pageEmpty = true;
+  }
+
+  ngOnDestroy() {
+    this.pageSettings.pageEmpty = false;
   }
 
 }

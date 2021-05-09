@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-
+import pageSettings from '../../config/page-settings';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnDestroy {
+  pageSettings: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private renderer: Renderer2) {
+    this.pageSettings = pageSettings;
+    this.pageSettings.pageEmpty = true;
+    this.renderer.addClass(document.body, 'bg-white');
+  }
 
-  ngOnInit(): void {
+  ngOnDestroy() {
+    this.pageSettings.pageEmpty = false;
+    this.renderer.removeClass(document.body, 'bg-white');
   }
 
   login() {
-    this.router.navigateByUrl("register");
-    // this.router.navigate(['/register']);
+    this.router.navigateByUrl("");
   }
+
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -8,16 +8,24 @@ import { filter, map } from 'rxjs/operators';
   styles: [
   ]
 })
-export class BreadcrumbsComponent implements OnDestroy {
+export class BreadcrumbsComponent implements OnDestroy, OnInit {
 
   public titulo: string = '';
   public tituloSuvs$?: Subscription;
 
   constructor(private router: Router) {
+
+  }
+  ngOnInit(): void {
     this.tituloSuvs$ = this.getArgumentsRuta().
       subscribe(({ titulo }) => {
-        this.titulo = titulo;
-        document.title = titulo;
+        if (titulo == undefined) {
+          this.titulo = 'Inicio';
+        } else {
+          this.titulo = titulo;
+        }
+
+        document.title = this.titulo;
       })
   }
 

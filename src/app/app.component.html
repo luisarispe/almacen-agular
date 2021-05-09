@@ -1,1 +1,46 @@
-<router-outlet></router-outlet>
+<!-- begin #page-container -->
+<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed show" [ngClass]="{
+  'has-scroll' : pageHasScroll,
+    'page-sidebar-minified': pageSettings.pageSidebarMinified,
+    'page-with-footer': pageSettings.pageWithFooter,
+    'page-content-full-height': pageSettings.pageContentFullHeight,
+    'page-without-sidebar': pageSettings.pageWithoutSidebar,
+    'page-with-right-sidebar': pageSettings.pageSidebarRight,
+    'page-with-two-sidebar': pageSettings.pageSidebarTwo,
+    'page-with-wide-sidebar': pageSettings.pageSidebarWide,
+    'page-right-sidebar-collapsed': pageSettings.pageSidebarRightCollapsed,
+    'page-with-light-sidebar': pageSettings.pageSidebarLight,
+    'page-with-top-menu': pageSettings.pageTopMenu,
+    'page-sidebar-toggled': pageSettings.pageMobileSidebarToggled,
+    'page-right-sidebar-toggled': pageSettings.pageMobileRightSidebarToggled,
+    'p-0': pageSettings.pageEmpty
+  }">
+
+  <!-- begin #header -->
+  <app-header *ngIf="!pageSettings.pageEmpty"></app-header>
+  <!-- end #header -->
+
+  <!-- begin #sidebar -->
+  <app-sidebar *ngIf="!pageSettings.pageWithoutSidebar && !pageSettings.pageEmpty"></app-sidebar>
+  <!-- end #sidebar -->
+
+
+
+  <!-- begin #content -->
+  <div id="content" class="content" class="content" [ngClass]="{
+        'content-full-width': pageSettings.pageContentFullWidth,
+        'content-inverse-mode': pageSettings.pageContentInverseMode,
+        'p-0 m-0': pageSettings.pageEmpty
+      }">
+
+    <!-- begin breadcrumb -->
+    <app-breadcrumbs></app-breadcrumbs>
+    <!-- end breadcrumb -->
+
+    <router-outlet></router-outlet>
+
+  </div>
+  <!-- end #content -->
+
+</div>
+<!-- end page container -->
