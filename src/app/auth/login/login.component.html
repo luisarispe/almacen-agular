@@ -4,11 +4,7 @@
     <div class="news-feed">
         <div class="news-image" style="background-image: url(../assets/img/login-bg/login-bg-11.jpg)"></div>
         <div class="news-caption">
-            <h4 class="caption-title"><b>Color</b> Admin App</h4>
-            <p>
-                Download the Color Admin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-            </p>
+            <h4 class="caption-title"><b>Almacen</b> App</h4>
         </div>
     </div>
     <!-- end news-feed -->
@@ -17,8 +13,8 @@
         <!-- begin login-header -->
         <div class="login-header">
             <div class="brand">
-                <span class="logo"></span> <b>Color</b> Admin
-                <small>responsive bootstrap 4 admin template</small>
+                <span class="logo"></span> <b>Almacen</b> App
+                <small>Práctica de Angular</small>
             </div>
             <div class="icon">
                 <i class="fa fa-sign-in-alt"></i>
@@ -27,28 +23,38 @@
         <!-- end login-header -->
         <!-- begin login-content -->
         <div class="login-content">
-            <form (submit)="login()" class="margin-bottom-0">
+            <form (submit)="login()" class="margin-bottom-0" autocomplete="off" [formGroup]="loginForm">
                 <div class="form-group m-b-15">
-                    <input type="text" class="form-control form-control-lg" placeholder="Email Address" required />
+                    <input type="email" class="form-control form-control-lg" placeholder="Correo"
+                        formControlName="correo" />
+                    <div *ngIf="getControl.correo.invalid  && getControl.correo.touched" class="text-danger">
+                        <div *ngIf="getControl.correo.errors?.required">
+                            Correo requerido.
+                        </div>
+                        <div *ngIf="getControl.correo.errors?.email">
+                            Debe ingresar un crreo valido.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group m-b-15">
-                    <input type="password" class="form-control form-control-lg" placeholder="Password" required />
-                </div>
-                <div class="checkbox checkbox-css m-b-30">
-                    <input type="checkbox" id="remember_me_checkbox" value="" />
-                    <label for="remember_me_checkbox">
-                        Remember Me
-                    </label>
+                    <input type="password" class="form-control form-control-lg" placeholder="Contraseña"
+                        formControlName="contrasena" />
+                    <div *ngIf="getControl.contrasena.invalid && getControl.contrasena.touched" class="text-danger">
+                        <div *ngIf="getControl.contrasena.errors?.required">
+                            Contraseña requerida.
+                        </div>
+                    </div>
                 </div>
                 <div class="login-buttons">
-                    <button type="submit" class="btn btn-success btn-block btn-lg">Sign me in</button>
+                    <button type="submit" class="btn btn-success btn-block btn-lg"
+                        [disabled]="loginForm.invalid">Ingresar</button>
                 </div>
                 <div class="m-t-20 m-b-40 p-b-40 text-inverse">
-                    Not a member yet? Click <a href="register_v3.html">here</a> to register.
+                    ¿No eres miembro todavía? Clic <a routerLink="/register">aqui</a> Puedes registrarte.
                 </div>
                 <hr />
                 <p class="text-center text-grey-darker mb-0">
-                    &copy; Color Admin All Right Reserved 2020
+                    Almacen Todos los derechos reservados 2021
                 </p>
             </form>
         </div>

@@ -8,14 +8,15 @@ import { InicioComponent } from './modules/inicio/inicio.component';
 import { ProductoComponent } from './modules/producto/producto/producto.component';
 import { CategoriaComponent } from './modules/producto/categoria/categoria.component';
 import { AuthRoutingModule } from './auth/auth.rounting';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
 
 
-  { path: '', component: InicioComponent, data: { titulo: 'Inicio' } },
-  { path: 'producto', component: ProductoComponent, data: { titulo: 'Productos' } },
-  { path: 'productoCategoria', component: CategoriaComponent, data: { titulo: 'Categoría de Productos' } },
+  { path: '', canActivate: [AuthGuard], component: InicioComponent, data: { titulo: 'Inicio' } },
+  { path: 'producto', canActivate: [AuthGuard], component: ProductoComponent, data: { titulo: 'Productos' } },
+  { path: 'productoCategoria', canActivate: [AuthGuard], component: CategoriaComponent, data: { titulo: 'Categoría de Productos' } },
   { path: '**', component: NopagefoundComponent, data: { titulo: 'Error 404' } },
 
 ];
