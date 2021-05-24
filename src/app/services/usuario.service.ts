@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { loginForm } from '../interfaces/login-form.interface';
 import { Router } from '@angular/router';
+import { Usuario } from '../models/usuario.model';
 
 const base_url = environment.base_url;
 
@@ -13,6 +14,7 @@ const base_url = environment.base_url;
   providedIn: 'root'
 })
 export class UsuarioService {
+  public usuario?: Usuario;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -37,7 +39,10 @@ export class UsuarioService {
           { 'x-token': token }
       }).pipe(
         tap((resp: any) => {
+          const { id, nombre, correo, createdAt, updatedAt, estado } = resp.usuario;
+          this.usuario = new Usuario(id, nombre, correo, createdAt, updatedAt, estado)
           localStorage.setItem('token', resp.token)
+          console.log(this.usuario);
         }),
         map((resp) => {
           return true;

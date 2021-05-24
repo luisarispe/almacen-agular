@@ -11,14 +11,15 @@
                         <img src="./assets/img/user/user-14.jpg" alt="" />
                     </div>
                     <div class="info">
-                        <b class="caret pull-right"></b>Luis Arispe
+                        <b class="caret pull-right"></b>{{usuarioService.usuario?.nombre}}
                         <small>Front end developer</small>
                     </div>
                 </a>
             </li>
             <li>
                 <ul class="nav nav-profile">
-                    <li><a href="javascript:;"><i class="fa fa-cog"></i> Editar Perfil</a></li>
+                    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="perfil"><i
+                                class="fa fa-cog"></i> Editar Perfil</a></li>
                 </ul>
             </li>
         </ul>
