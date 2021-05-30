@@ -3,18 +3,57 @@
     <div class="col-12 col-md-6">
         <div class="panel panel-info">
             <div class="panel-body">
-                Editar Perfil
-                <form>
-                    <div class="col-md-12">
-                        <label>Nombre:</label>
-                        <input type="text" class="form-control">
+                <h4>Editar Perfil</h4>
+                <form (ngSubmit)="actualizarUsuario()" [formGroup]="perfilForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Nombre:</label>
+                            <input type="text" class="form-control" formControlName="nombre" maxlength="100">
+                            <div *ngIf="getControl.nombre.invalid && getControl.nombre.touched" class="text-danger">
+                                <div *ngIf="getControl.nombre.errors!.required">
+                                    Nombre requerido.
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-12">
-                        <label>Correo:</label>
-                        <input type="text" class="form-control">
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Correo:</label>
+                            <input type="email" class="form-control" formControlName="correo" maxlength="100">
+                            <div *ngIf="getControl.correo.invalid && getControl.correo.touched" class="text-danger">
+                                <div *ngIf="getControl.correo.errors!.required">
+                                    Correo requerido.
+                                </div>
+                                <div *ngIf="getControl.correo.errors!.email">
+                                    Debe ingresar un correo valido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 text-right">
+                        <div class="col-md-12">
+                            <button [disabled]="perfilForm.invalid" type="submit" class="btn btn-success"><i
+                                    class="fa fa-save"> Guardar</i></button>
+                        </div>
                     </div>
                 </form>
+                <hr>
+                <div>
+                    <div class="col-md-12">
+                        <label>Estado:</label>
+                        <br>
+                        <h5><span *ngIf="usuario!.estado" class="badge badge-secondary">Activo</span></h5>
+                        <h5><span *ngIf="!usuario!.estado" class="badge badge-danger">Inactivo</span></h5>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Fecha Creación:</label><br>
+                        <h5>{{usuario!.createdAt | date : 'EEEE d MMMM, y, h:mm a'}}</h5>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Fecha Actualización:</label><br>
+                        <h5>{{usuario!.updatedAt | date : 'EEEE d MMMM, y, h:mm a'}}</h5>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -22,7 +61,8 @@
     <div class="col-12 col-md-6">
         <div class="panel panel-info">
             <div class="panel-body">
-                Cambiar Contraseña
+                <h4>Cambiar Contraseña</h4>
+
             </div>
         </div>
     </div>

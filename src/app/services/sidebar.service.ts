@@ -18,6 +18,16 @@ export class SidebarService {
           url: 'productoCategoria'
         }
       ]
+    },
+    {
+      titulo: 'Usuarios',
+      icono: 'account_circle',
+      submenu: [
+        {
+          titulo: 'Gestión',
+          url: 'usuario'
+        },
+      ]
     }
   ]
   constructor() { }

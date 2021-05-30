@@ -11,7 +11,7 @@
                         <img src="./assets/img/user/user-14.jpg" alt="" />
                     </div>
                     <div class="info">
-                        <b class="caret pull-right"></b>{{usuarioService.usuario?.nombre}}
+                        <b class="caret pull-right"></b>{{usuarioService.usuario?.nombre | titlecase | slice:0:20}}
                         <small>Front end developer</small>
                     </div>
                 </a>

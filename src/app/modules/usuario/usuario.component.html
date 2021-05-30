@@ -1,0 +1,49 @@
+<!-- begin panel -->
+<div class="panel panel-info">
+
+    <div class="panel-body table-responsive">
+        <h5>Cantidad de usuarios: {{total}}</h5><br>
+        <table class="table text-nowrap table-striped">
+            <thead>
+                <tr class="bg-black-transparent-3">
+                    <th class="text-white">Nombre</th>
+                    <th class="text-white">Correo</th>
+                    <th class="text-white">Estado</th>
+                    <th class="text-white">F.Creación</th>
+                    <th class="text-white">F.Actualización</th>
+                    <th><i class="fas fa-cog text-white">
+                        </i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.correo}}</td>
+                    <td>
+                        <span *ngIf="usuario!.estado" class="badge badge-secondary">Activo</span>
+                        <span *ngIf="!usuario!.estado" class="badge badge-danger">Inactivo</span>
+                    </td>
+                    <td>{{usuario.createdAt | date : 'EEEE d MMMM, y, h:mm a'}}</td>
+                    <td>{{usuario.updatedAt | date : 'EEEE d MMMM, y, h:mm a'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top"
+                            title="Actualizar">
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs ml-1" data-toggle="tooltip"
+                            data-placement="top" title="Eliminar">
+                            <i class="fa fa-trash">
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-right">
+            <button (click)="cambiarPagina(-5)" class="btn btn-primary mr-1">Anterior</button>
+            <button (click)="cambiarPagina(5)" class="btn btn-primary">Siguiente</button>
+        </div>
+    </div>
+</div>
+<!-- end panel -->
